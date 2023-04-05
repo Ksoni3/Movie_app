@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  // w-80 min-h-[300px] max-h-[700px]
+  width: 320px;
+  height: 700px;
+  overflow-x: hidden;
+
+  .image {
+    height: 400px;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+      0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+
+    .loadingimage {
+      animation: spinner 4s linear infinite;
+    }
+  }
+
+  .skeleton-theming {
+    width: 90%;
+    margin: 0.6rem auto;
+    margin-top: 2rem;
+
+    h1 {
+      margin-bottom: 20px;
+    }
+  }
+
+  h2 {
+    margin: 20px 0;
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

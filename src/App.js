@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Footer from './Components/Footer'
 import NoMoviesFound from './Components/NoMoviesFound'
 import MovieDetails from './Components/MovieDetails'
-import Loading from './Components/Loading'
+import WatchLater from './Pages/WatchLater'
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
           <Route path="/explore_movies/:name" element={<ExploreMovies />} />
           <Route path="/movie/:id" element={<MovieDetails />} />
           <Route path="/contact_us" element={<ContactUs />} />
+          <Route path="/watchlater" element={<WatchLater />} />
         </Routes>
       </Router>
       <Footer />

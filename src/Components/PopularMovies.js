@@ -13,7 +13,7 @@ const PopularMovies = () => {
       ) : (
         <div className="w-full bg-white rounded-lg md:grid md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {movie.map((curMovie, index) => {
-            return <MovieCard id={index} curMovie={curMovie} />
+            return <MovieCard key={index} curMovie={curMovie} />
           })}
         </div>
       )}

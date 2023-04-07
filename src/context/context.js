@@ -20,43 +20,49 @@ const AppProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [movie, setMovie] = useState([])
   const [category, setCategory] = useState('popular')
-  const [genre, setGenre] = useState('action')
-  const [isError, setIsError] = useState({ show: false, msg: '' })
   const [query, setQuery] = useState('')
   const [isOpen, setIsOpen] = useState(false)
-  const [mobile, setMobile] = useState(false)
+  const [watchLater, setWatchLater] = useState([])
+  const [genreLists, setGenreLists] = useState([])
 
-  const [genreEndpoint, setGenreEndpoint] = useState(
-    `discover/movie?api_key=${api_key}&with_genres= ${genre}`,
-  )
+  //endpoint for fectching list of genre Links
 
+  const genreListsPath = `https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`
+
+  //endpoint for category
   const [endpoint, setEndPoint] = useState(
     `movie/${category}?api_key=${api_key}`,
   )
 
+  // two URLS
   const API_URL = `${base_url}${endpoint}`
-  const Genre_API = `${base_url}${genreEndpoint}`
-  const changeGenre = useCallback(
-    (genre) => {
-      setGenre(genre)
-    },
-    [genre],
-  )
+  const searchApi = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=`
+
+  // function to change genre and make an api call
+
+  const changeGenre = (genreName) => {
+    //we will call the function here
+    getGenreMovies(genreName)
+  }
 
   const changeCategory = useCallback((categoryname) => {
     setCategory(categoryname)
   }, [])
 
-  const searchApi =
-    'https://api.themoviedb.org/3/search/movie?api_key=d3129f18427d37c5012b4f4f64b1222a&query='
-
-  useEffect(() => {
-    setGenreEndpoint(`discover/movie?api_key=${api_key}&with_genres= ${genre}`)
-  }, [genre])
-
   useEffect(() => {
     setEndPoint(`movie/${category}?api_key=${api_key}`)
   }, [category])
+
+  //fetching gerne lists
+
+  const getGenreLists = useCallback(async () => {
+    const res = await axios.get(genreListsPath)
+    setGenreLists(res.data.genres)
+  }, [genreListsPath])
+
+  useEffect(() => {
+    getGenreLists()
+  }, [])
 
   // fetching movies
 
@@ -89,25 +95,24 @@ const AppProvider = ({ children }) => {
     [query],
   )
 
-  // fetching genremovies
+  // function to fetch movies by genre
 
-  const getGenreMovies = useCallback(() => {
+  const getGenreMovies = (par) => {
+    const newGenrePath = `${base_url}discover/movie?api_key=${api_key}&with_genres=${par}`
     axios
-      .get(Genre_API)
+      .get(newGenrePath)
       .then((res) => {
-        console.log(res.data.results)
         setMovie(res.data.results)
       })
       .catch((error) => console.log(error))
       .finally(() => {
         setIsLoading(false)
       })
-  }, [Genre_API])
+  }
 
   const value = {
     api_key,
     movie,
-    isError,
     isLoading,
     endpoint,
     setEndPoint,
@@ -120,14 +125,11 @@ const AppProvider = ({ children }) => {
     NoImage,
     isOpen,
     setIsOpen,
-    mobile,
-    setMobile,
-    genre,
-    setGenre,
     changeGenre,
     getGenreMovies,
-    genreEndpoint,
-    setGenreEndpoint,
+    watchLater,
+    setWatchLater,
+    genreLists,
   }
 
   useEffect(() => {
@@ -136,7 +138,7 @@ const AppProvider = ({ children }) => {
     } else {
       getSearchedMovies(searchApi)
     }
-  }, [query, API_URL, getSearchedMovies, searchApi, getMovies])
+  }, [query, API_URL, getSearchedMovies, searchApi, getMovies, category])
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }

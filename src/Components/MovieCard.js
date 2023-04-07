@@ -1,9 +1,41 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import NoImage from '../context/NoImage.jpg'
+import { useGlobalContext } from '../context/context'
 
 const MovieCard = ({ curMovie }) => {
   const API_IMG = 'https://image.tmdb.org/t/p/w500'
+  const { watchLater, setWatchLater } = useGlobalContext()
+  const [inWatchLater, setInWatchLater] = useState(false)
+
+  // removing movie on clicking unsave
+
+  const handleDelete = (movie) => {
+    const newWatchLater = watchLater.filter((singleMovie) => {
+      return singleMovie.id !== movie.id
+    })
+    setWatchLater(newWatchLater)
+  }
+
+  const saveToWatchLater = (movie) => {
+    if (watchLater.includes(movie)) {
+      handleDelete(movie)
+      setInWatchLater(!inWatchLater)
+      return
+    }
+    const newWatchLater = [...watchLater, movie]
+    setWatchLater(newWatchLater)
+    setInWatchLater(true)
+  }
+
+  useEffect(() => {
+    const movieee = watchLater.filter(
+      (singleMovie) => singleMovie.id === curMovie.id,
+    )
+    if (movieee.length) {
+      setInWatchLater(true)
+    }
+  }, [watchLater, curMovie.id])
 
   return (
     <>
@@ -54,10 +86,14 @@ const MovieCard = ({ curMovie }) => {
                     {' '}
                     {curMovie.original_language.toUpperCase()}{' '}
                   </div>
-                  <div className="bg-gray-700 w-auto px-3 py-2 rounded-2xl text-xl text-white hover:bg-gray-600 transition duration-150 ease-in-out">
-                    {' '}
-                    Save{' '}
-                  </div>
+                  <button
+                    onClick={() => {
+                      saveToWatchLater(curMovie)
+                    }}
+                    className="bg-yellow-700 w-auto px-3 py-2 rounded-2xl text-xl text-white hover:bg-gray-600 transition duration-150 ease-in-out"
+                  >
+                    {!inWatchLater ? 'Save' : 'Unsave'}
+                  </button>
                 </div>
               </div>
             </div>

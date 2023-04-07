@@ -38,7 +38,7 @@ const Navbar = () => {
           </li>
           <li className="transition hover:scale-15  duration-800 ease-in-out">
             {' '}
-            <Link to="/contact_us"> Watch Later</Link>{' '}
+            <Link to="/watchlater"> Watch Later</Link>{' '}
           </li>
         </ul>
 
@@ -72,7 +72,7 @@ const Navbar = () => {
           </li>
           <li className=" pt-10 transition hover:scale-15  duration-800 ease-in-out">
             {' '}
-            <Link to="/contact_us" onClick={menuClose}>
+            <Link to="/watchlater" onClick={menuClose}>
               {' '}
               Watch Later
             </Link>{' '}

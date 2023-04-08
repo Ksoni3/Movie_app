@@ -45,8 +45,8 @@ const Navbar = () => {
         <ul
           className={
             isOpen
-              ? ' flex flex-col justify-center items-center md:hidden gap-12 text-3xl pb-5 font-semibold text-blue-800 border-b-2 absolute top-28 bg-white w-full h-3/4 z-10 '
-              : ' flex flex-col justify-center items-center md:hidden gap-12 text-3xl font-semibold text-blue-800 border-b-2 absolute -top-full bg-white w-full h-3/4 z-10 '
+              ? ' flex flex-col justify-center items-center md:hidden gap-12 text-3xl pb-20 font-semibold text-blue-800 border-b-2 absolute top-28 bg-white w-full h-screen z-10 '
+              : ' flex flex-col justify-center items-center md:hidden gap-12 text-3xl font-semibold text-blue-800 border-b-2 absolute -top-full bg-white w-full h-screen z-10 '
           }
         >
           <li className=" transition hover:scale-105 duration-800 ease-in-out">

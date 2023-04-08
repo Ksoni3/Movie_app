@@ -19,7 +19,7 @@ const Home = () => {
             Popular Movies
           </h1>
         ) : (
-          <h1 className="text-5xl my-5 font-serif font-semibold text-center">
+          <h1 className="text-xl sm:text-5xl my-5 font-serif font-semibold text-center">
             Results for: {query}{' '}
           </h1>
         )}

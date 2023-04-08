@@ -40,7 +40,7 @@ const MovieCard = ({ curMovie }) => {
   return (
     <>
       <div>
-        <div className=" border border-gray-200 w-80 min-h-[300px] max-h-[700px] mb-3 rounded-md ">
+        <div className=" border border-gray-200 w-72 min-h-[300px] max-h-[700px] mb-3 rounded-md ">
           <div className="w-full flex justify-center">
             <div className=" w-full max-h-[900px] flex flex-col justify-center items-center rounded-lg">
               <button

@@ -12,9 +12,9 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="h-24 border grid items-center">
+      <div className="h-24 border flex flex-col items-center justify-center">
         {query.length === 0 ? (
-          <h1 className="text-xl sm:text-5xl my-5 font-serif font-semibold text-center">
+          <h1 className="text-xl  sm:text-5xl my-5 font-serif font-semibold text-center">
             {' '}
             Popular Movies
           </h1>
@@ -24,7 +24,7 @@ const Home = () => {
           </h1>
         )}
       </div>
-      <div className=" h-full mt-8 flex justify-center p-4">
+      <div className=" h-full mt-8 flex justify-center items-center">
         {isLoading ? <PageLoader /> : <PopularMovies />}
       </div>
     </div>

@@ -11,7 +11,7 @@ const PopularMovies = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="w-full bg-white rounded-lg md:grid md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4  gap-4">
+        <div className="w-full border border-black mx-auto bg-white rounded-lg md:grid md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4  gap-4">
           {movie.map((curMovie, index) => {
             return <MovieCard key={index} curMovie={curMovie} />
           })}

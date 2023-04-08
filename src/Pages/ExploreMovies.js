@@ -74,7 +74,7 @@ const ExploreMovies = () => {
       {isLoading ? (
         <PageLoader />
       ) : (
-        <div className="bg-white rounded-lg grid md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <div className="bg-white rounded-lg grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 xl:p-10">
           {movie &&
             movie.length > 0 &&
             movie.map((curMovie, index) => {

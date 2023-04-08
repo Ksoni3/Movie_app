@@ -7,10 +7,9 @@ const WatchLater = () => {
   const { watchLater } = useGlobalContext()
 
   return (
-    <div className="min-h-screen flex flex-col gap-5 flex-wrap justify-center items-center">
+    <div className="min-h-screen flex flex-col gap-5 flex-wrap items-center">
       <div className="h-24 border w-full grid items-center">
         <h1 className=" text-xl sm:text-5xl my-5 font-serif font-semibold text-center">
-          {' '}
           Movies you have saved
         </h1>
       </div>

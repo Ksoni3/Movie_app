@@ -24,7 +24,7 @@ const Home = () => {
           </h1>
         )}
       </div>
-      <div className=" h-full mt-8 flex justify-center">
+      <div className=" h-full mt-8 flex justify-center p-4">
         {isLoading ? <PageLoader /> : <PopularMovies />}
       </div>
     </div>

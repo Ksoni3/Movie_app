@@ -11,8 +11,8 @@ const Home = () => {
   }, [setCategory])
 
   return (
-    <div className="min-h-screen">
-      <div className="h-24 border flex flex-col items-center justify-center">
+    <div className="min-h-screen flex flex-col justify-center">
+      <div className="h-24 border grid items-center">
         {query.length === 0 ? (
           <h1 className="text-xl  sm:text-5xl my-5 font-serif font-semibold text-center">
             {' '}

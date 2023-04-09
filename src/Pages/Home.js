@@ -4,11 +4,12 @@ import PageLoader from '../Components/PageLoader'
 import { useEffect } from 'react'
 
 const Home = () => {
-  const { setCategory, isLoading, query } = useGlobalContext()
+  const { setCategory, isLoading, query, setHideSearchBar } = useGlobalContext()
 
   useEffect(() => {
     setCategory('popular')
-  }, [setCategory])
+    setHideSearchBar(false)
+  }, [setCategory, setHideSearchBar])
 
   return (
     <div className="min-h-screen flex flex-col justify-center">

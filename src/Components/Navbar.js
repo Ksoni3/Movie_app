@@ -3,14 +3,28 @@ import { Link } from 'react-router-dom'
 import { useGlobalContext } from '../context/context'
 import { BiMenu } from 'react-icons/bi'
 import { RxCrossCircled } from 'react-icons/rx'
+import SingleNavLink from './SingleNavLink'
 
 import Search from './Search'
 
 const Navbar = () => {
-  const { mobile, isOpen, setIsOpen } = useGlobalContext()
+  const {
+    isOpen,
+    setIsOpen,
+    hideSearchBar,
+    setHidesSearchBar,
+  } = useGlobalContext()
 
   const menuClose = () => {
     setIsOpen(false)
+  }
+
+  const handleSearchBar = () => {
+    if (hideSearchBar === true) {
+      return
+    } else {
+      setHidesSearchBar(true)
+    }
   }
 
   return (
@@ -23,62 +37,37 @@ const Navbar = () => {
         />
 
         <ul className=" hidden lg:flex lg:gap-8 xl:gap-10 font-normal text-xl text-blue-800 ">
-          <button className="h-8 w-fit">
-            <li className="  transition hover:scale-105 duration-800 ease-in-out">
-              {' '}
-              <Link to="/"> Home </Link>{' '}
-            </li>
-          </button>
-          <li className="transition hover:scale-105  duration-800 ease-in-out">
-            <Link to="/explore_movies"> Explore Movies </Link>{' '}
-          </li>
-          <li className="transition hover:scale-15  duration-800 ease-in-out">
-            {' '}
-            <Link to="/contact_us"> Contact Us</Link>{' '}
-          </li>
-          <li className="transition hover:scale-15  duration-800 ease-in-out">
-            {' '}
-            <Link to="/watchlater"> Watch Later</Link>{' '}
-          </li>
+          <SingleNavLink to="/" linkName="Home" />
+          <SingleNavLink to="/explore_movies" linkName="Explore Movies" />
+          <SingleNavLink to="/contact_us" linkName="Contact Us" />
+          <SingleNavLink to="/watchlater" linkName=" Watch Later" />
         </ul>
 
         <ul
-          className={
-            isOpen
-              ? ' flex flex-col justify-center items-center md:hidden gap-12 text-3xl pb-20 font-semibold text-blue-800 border-b-2 absolute top-28 bg-white w-full h-screen z-10 '
-              : ' flex flex-col justify-center items-center md:hidden gap-12 text-3xl font-semibold text-blue-800 border-b-2 absolute -top-full bg-white w-full h-screen z-10 '
-          }
+          className={` flex flex-col justify-center items-center md:hidden gap-12 text-3xl pb-20 font-semibold text-blue-800 border-b-2 absolute ${
+            isOpen ? 'top-28' : '-top-full'
+          } bg-white w-full h-screen z-10`}
         >
-          <li className=" transition hover:scale-105 duration-800 ease-in-out">
-            {' '}
-            <Link to="/" onClick={menuClose}>
-              {' '}
-              Home{' '}
-            </Link>{' '}
-          </li>
-
-          <li className=" pt-10 transition hover:scale-105  duration-800 ease-in-out">
-            <Link to="/explore_movies" onClick={menuClose}>
-              {' '}
-              Explore Movies{' '}
-            </Link>{' '}
-          </li>
-          <li className=" pt-10 transition hover:scale-15  duration-800 ease-in-out">
-            {' '}
-            <Link to="/contact_us" onClick={menuClose}>
-              {' '}
-              Contact Us
-            </Link>{' '}
-          </li>
-          <li className=" pt-10 transition hover:scale-15  duration-800 ease-in-out">
-            {' '}
-            <Link to="/watchlater" onClick={menuClose}>
-              {' '}
-              Watch Later
-            </Link>{' '}
-          </li>
+          <SingleNavLink to="/" linkName="Home" onClick={menuClose} />
+          <SingleNavLink
+            to="/explore_movies"
+            linkName="Explore Movies"
+            onClick={menuClose}
+          />
+          <SingleNavLink
+            to="/contact_us"
+            linkName="Contact Us"
+            onClick={menuClose}
+          />
+          <SingleNavLink
+            to="/watchlater"
+            linkName=" Watch Later"
+            onClick={menuClose}
+          />
         </ul>
+
         <Search />
+
         <div
           className="block lg:hidden text-4xl sm:text-5xl mr-4"
           onClick={() => setIsOpen(!isOpen)}

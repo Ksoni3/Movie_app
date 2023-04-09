@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import MovieCard from '../Components/MovieCard'
 import { useGlobalContext } from '../context/context'
 import NoMoviesFound from '../Components/NoMoviesFound'
 
 const WatchLater = () => {
-  const { watchLater } = useGlobalContext()
+  const { watchLater, setHideSearchBar } = useGlobalContext()
+
+  useEffect(() => {
+    setHideSearchBar(true)
+  }, setHideSearchBar)
 
   return (
     <div className="min-h-screen flex flex-col gap-5 flex-wrap items-center">

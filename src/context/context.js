@@ -24,6 +24,7 @@ const AppProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [watchLater, setWatchLater] = useState([])
   const [genreLists, setGenreLists] = useState([])
+  const [hideSearchBar, setHideSearchBar] = useState(false)
 
   //endpoint for fectching list of genre Links
 
@@ -130,6 +131,8 @@ const AppProvider = ({ children }) => {
     watchLater,
     setWatchLater,
     genreLists,
+    hideSearchBar,
+    setHideSearchBar,
   }
 
   useEffect(() => {

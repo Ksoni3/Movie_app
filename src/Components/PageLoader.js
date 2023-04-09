@@ -3,7 +3,7 @@ import Loading from './Loading'
 
 const PageLoader = () => {
   return (
-    <div className="w-full bg-white rounded-lg md:grid md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    <div className="xl:w-[90%] w-full bg-white rounded-lg flex justify-center flex-wrap gap-4">
       <Loading />
       <Loading />
       <Loading />

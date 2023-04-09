@@ -14,11 +14,13 @@ const ExploreMovies = () => {
     changeGenre,
     movie,
     isLoading,
+    setHideSearchBar,
   } = useGlobalContext()
 
   useEffect(() => {
     setCategory('top_rated')
-  }, [setCategory])
+    setHideSearchBar(false)
+  }, [setCategory, setHideSearchBar])
 
   useEffect(() => {
     if (filterBy === 'Genre') {

@@ -28,6 +28,8 @@ const ExploreMovies = () => {
     }
   }, [filterBy])
 
+  // checking
+
   const handleFilterChange = (event) => {
     setFilterBy(event.target.value)
   }

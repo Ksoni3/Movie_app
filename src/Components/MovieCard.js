@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import NoImage from '../context/NoImage.jpg'
 import { useGlobalContext } from '../context/context'
+import Zoom from 'react-reveal/Zoom'
 
 const MovieCard = ({ curMovie }) => {
   const API_IMG = 'https://image.tmdb.org/t/p/w500'
   const { watchLater, setWatchLater } = useGlobalContext()
-  const [inWatchLater, setInWatchLater] = useState(false)
+  const [isInWatchLater, setIsInWatchLater] = useState(false)
 
   // removing movie on clicking unsave
 
@@ -20,28 +21,30 @@ const MovieCard = ({ curMovie }) => {
   const saveToWatchLater = (movie) => {
     if (watchLater.includes(movie)) {
       handleDelete(movie)
-      setInWatchLater(!inWatchLater)
+      setIsInWatchLater(false)
       return
     }
+
     const newWatchLater = [...watchLater, movie]
     setWatchLater(newWatchLater)
-    setInWatchLater(true)
+    setIsInWatchLater(true)
   }
 
+  //checking if movie is present in the watch later
   useEffect(() => {
-    const movieee = watchLater.filter(
+    const isPresent = watchLater.filter(
       (singleMovie) => singleMovie.id === curMovie.id,
     )
-    if (movieee.length) {
-      setInWatchLater(true)
+    if (isPresent.length) {
+      setIsInWatchLater(true)
     }
   }, [watchLater, curMovie.id])
 
   return (
     <>
-      <div>
-        <div className=" border border-gray-200 w-80 xl:w-72 min-h-[300px] max-h-[700px] mb-3 rounded-md ">
-          <div className="w-full flex justify-center">
+      <div className=" border border-gray-200 w-80 xl:w-72 min-h-[300px] max-h-[700px] mb-3 rounded-md ">
+        <div className="w-full flex justify-center">
+          <Zoom>
             <div className=" w-full max-h-[900px] flex flex-col justify-center items-center rounded-lg">
               <button
                 type="button"
@@ -92,12 +95,12 @@ const MovieCard = ({ curMovie }) => {
                     }}
                     className="bg-yellow-700 w-auto px-3 py-2 rounded-2xl text-xl text-white hover:bg-gray-600 transition duration-150 ease-in-out"
                   >
-                    {!inWatchLater ? 'Save' : 'Unsave'}
+                    {!isInWatchLater ? 'Save' : 'Unsave'}
                   </button>
                 </div>
               </div>
             </div>
-          </div>
+          </Zoom>
         </div>
       </div>
     </>

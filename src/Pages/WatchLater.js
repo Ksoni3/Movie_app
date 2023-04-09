@@ -21,7 +21,7 @@ const WatchLater = () => {
       {watchLater.length === 0 ? (
         <NoMoviesFound />
       ) : (
-        <div className="w-full pl-11 bg-white rounded-lg md:grid md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className=" bg-white self-center rounded-lg flex justify-center flex-wrap gap-4">
           {watchLater.map((curMovie, index) => {
             return <MovieCard key={index} curMovie={curMovie} />
           })}

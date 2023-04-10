@@ -10,12 +10,9 @@ const ContactUs = () => {
   }, setHideSearchBar)
 
   return (
-    <>
-      <Navbar />
-      <div className="h-screen bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900">
-        ContactUs
-      </div>
-    </>
+    <div className="h-screen bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900">
+      ContactUs
+    </div>
   )
 }
 

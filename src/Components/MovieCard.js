@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import NoImage from '../context/NoImage.jpg'
 import { useGlobalContext } from '../context/context'
-import Zoom from 'react-reveal/Zoom'
+import { Zoom, Reveal } from 'react-awesome-reveal'
+// import Zoom from 'react-reveal/Zoom'
 
 const MovieCard = ({ curMovie }) => {
   const API_IMG = 'https://image.tmdb.org/t/p/w500'
@@ -44,11 +45,11 @@ const MovieCard = ({ curMovie }) => {
     <>
       <div className=" border border-gray-200 w-80 xl:w-72 min-h-[300px] max-h-[700px] mb-3 rounded-md ">
         <div className="w-full flex justify-center">
-          <Zoom>
+          <Reveal direction="left" triggerOnce>
             <div className=" w-full max-h-[900px] flex flex-col justify-center items-center rounded-lg">
               <button
                 type="button"
-                className="relative  inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                className="relative  inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out -z-10"
               >
                 {curMovie.vote_average}
               </button>
@@ -100,7 +101,7 @@ const MovieCard = ({ curMovie }) => {
                 </div>
               </div>
             </div>
-          </Zoom>
+          </Reveal>
         </div>
       </div>
     </>

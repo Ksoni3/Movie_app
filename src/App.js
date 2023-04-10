@@ -21,6 +21,7 @@ function App() {
           <Route path="/contact_us" element={<ContactUs />} />
           <Route path="/watchlater" element={<WatchLater />} />
         </Routes>
+        <Navbar />
         <Footer />
       </Router>
     </>

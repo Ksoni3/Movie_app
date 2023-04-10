@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="h-24 bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900 flex items-center justify-between flex-wrap z-50">
+      <div className="h-28 sm:h-24 bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900 flex items-center justify-between flex-wrap z-50 py-10">
         <img
           className="rounded-xl h-9 sm:h-11 md:h-14 ml-4 sm:ml-5 md:ml-10 "
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/1200px-IMDB_Logo_2016.svg.png"

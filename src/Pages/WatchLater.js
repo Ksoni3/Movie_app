@@ -11,9 +11,9 @@ const WatchLater = () => {
   }, setHideSearchBar)
 
   return (
-    <div className="min-h-screen flex flex-col gap-5 flex-wrap items-center">
-      <div className="h-24 border w-full grid items-center">
-        <h1 className=" text-xl sm:text-5xl my-5 font-serif font-semibold text-center">
+    <div className="min-h-screen flex flex-col gap-5 flex-wrap items-center bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900 ">
+      <div className="h-24  w-full grid items-center">
+        <h1 className=" text-xl sm:text-5xl my-5 font-serif text-white text-center">
           Movies you have saved
         </h1>
       </div>
@@ -21,7 +21,7 @@ const WatchLater = () => {
       {watchLater.length === 0 ? (
         <NoMoviesFound />
       ) : (
-        <div className=" bg-white self-center rounded-lg flex justify-center flex-wrap gap-4">
+        <div className=" bg-white self-center rounded-lg flex justify-center flex-wrap gap-4 bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900">
           {watchLater.map((curMovie, index) => {
             return <MovieCard key={index} curMovie={curMovie} />
           })}

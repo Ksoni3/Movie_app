@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <>
-      <footer className="bg-slate-200 text-center ">
+      <footer className="bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900 text-center  ">
         <div className="px-6 pt-6">
           <form action="">
             <div className="grid md:grid-cols-3 gird-cols-1 gap-4  justify-center items-center">
@@ -41,7 +41,7 @@ const Footer = () => {
               <div className="md:mr-auto mb-6">
                 <button
                   type="button"
-                  className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                  className="inline-block px-6 py-2.5 bg-slate-700 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                 >
                   Subscribe
                 </button>

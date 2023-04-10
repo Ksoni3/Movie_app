@@ -12,15 +12,15 @@ const Home = () => {
   }, [setCategory, setHideSearchBar])
 
   return (
-    <div className="min-h-screen flex flex-col justify-center">
-      <div className="h-24 border grid items-center">
+    <div className="min-h-screen bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900  flex flex-col justify-center">
+      <div className="h-24 grid items-center">
         {query.length === 0 ? (
-          <h1 className="text-xl  sm:text-5xl my-5 font-serif font-semibold text-center">
+          <h1 className="text-xl sm:text-4xl my-5 font-serif font-semibold text-center text-white">
             {' '}
             Popular Movies
           </h1>
         ) : (
-          <h1 className="text-xl sm:text-5xl my-5 font-serif font-semibold text-center">
+          <h1 className="text-xl sm:text-4xl my-5 font-serif font-semibold text-center text-white">
             Results for: {query}{' '}
           </h1>
         )}

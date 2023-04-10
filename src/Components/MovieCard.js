@@ -43,7 +43,7 @@ const MovieCard = ({ curMovie }) => {
 
   return (
     <>
-      <div className=" border border-gray-200 w-80 xl:w-72 min-h-[300px] max-h-[700px] mb-3 rounded-md ">
+      <div className=" w-80 xl:w-72 min-h-[300px] max-h-[700px] mb-5 rounded-md text-white shadow-lg">
         <div className="w-full flex justify-center">
           <Reveal direction="left" triggerOnce>
             <div className=" w-full max-h-[900px] flex flex-col justify-center items-center rounded-lg">
@@ -61,7 +61,7 @@ const MovieCard = ({ curMovie }) => {
               >
                 {curMovie.poster_path ? (
                   <img
-                    className="w-[100%] rounded-lg mx-fit -mt-10 max-h-[400px] transition duration-300 ease-in-out hover:scale-105"
+                    className="w-[100%] rounded-lg mx-fit -mt-10 max-h-[400px] transition duration-300 ease-in-out hover:scale-105 "
                     src={API_IMG + curMovie.poster_path}
                     alt=""
                   />
@@ -73,20 +73,20 @@ const MovieCard = ({ curMovie }) => {
                 )}
               </Link>
               <div className="p-6">
-                <h5 className="h-20 pt-2  text-gray-900 text-2xl font-serif mb-2 text-center ">
+                <h5 className="h-20 pt-2  text-white text-2xl font-serif mb-2 text-center ">
                   {curMovie && curMovie.original_title.length > 20
                     ? curMovie.original_title.slice(0, 20) + '...'
                     : curMovie.original_title}
                 </h5>
                 <div className="h-28 p-2 pb-5 ">
-                  <p className=" text-gray-700 font-sans mb-4 text-lg ">
+                  <p className=" text-black font-sans mb-4 text-lg ">
                     {curMovie.overview.length > 60
                       ? curMovie.overview.slice(0, 60) + '...'
                       : curMovie.overview}
                   </p>
                 </div>
                 <div className="w-full flex gap-10 text-center">
-                  <div className="bg-red-300 w-fit px-3 py-2 rounded-2xl font-bold hover:text-white hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ">
+                  <div className="bg-green-800 w-fit px-5 py-2 rounded-xl text-xl hover:shadow-lg transition duration-150 ease-in-out ">
                     {' '}
                     {curMovie.original_language.toUpperCase()}{' '}
                   </div>
@@ -94,7 +94,7 @@ const MovieCard = ({ curMovie }) => {
                     onClick={() => {
                       saveToWatchLater(curMovie)
                     }}
-                    className="bg-yellow-700 w-auto px-3 py-2 rounded-2xl text-xl text-white hover:bg-gray-600 transition duration-150 ease-in-out"
+                    className="bg-yellow-500 w-auto px-5 py-2 rounded-xl text-xl hover:bg-gray-600 transition duration-150 ease-in-out"
                   >
                     {!isInWatchLater ? 'Save' : 'Unsave'}
                   </button>

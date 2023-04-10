@@ -16,7 +16,7 @@ const SingleGenreLink = ({ singleLink }) => {
           onClick={() => {
             changeGenre(id)
           }}
-          className="w-40 bg-slate-700 border p-4 rounded-lg text-white z-20"
+          className="w-40 bg-slate-700 p-4 rounded-lg text-white z-20"
         >
           {name}
         </button>

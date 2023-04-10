@@ -35,16 +35,19 @@ const ExploreMovies = () => {
   }
 
   return (
-    <div className="h-100vh flex flex-col items-center justify-center gap-5 p-4">
-      <div className="text-lg">
-        <label className="font-bold ml-4"> Filter By: </label>
+    <div className="h-100vh flex flex-col items-center justify-center gap-5 p-4 bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900">
+      <div>
+        <label className="ml-6 text-xl md:text-2xl font-serif text-white">
+          {' '}
+          Filter By:{' '}
+        </label>
         <select
-          className="outline-none text-lg h-10"
+          className="outline-none text-lg h-10 rounded-md p-2"
           id="filterBy"
           value={filterBy}
           onChange={handleFilterChange}
         >
-          <option className="h-10" value="Category">
+          <option className="p-2 h-10" value="Category">
             Category
           </option>
           <option value="Genre">Genre</option>
@@ -52,7 +55,7 @@ const ExploreMovies = () => {
       </div>
 
       {filterBy === 'Category' ? (
-        <div className="w-full h-auto p-3 flex md:flex-start md:flex-wrap gap-3 border text-white text-base overflow-x-scroll md:overflow-x-hidden">
+        <div className="w-full h-auto p-3 flex md:flex-start md:flex-wrap gap-3 shadow-lg text-white text-base overflow-x-scroll md:overflow-x-hidden">
           {categoryLinks.map((singleLink, index) => {
             const { to, name, end } = singleLink
             return (
@@ -63,7 +66,7 @@ const ExploreMovies = () => {
               >
                 <button
                   onClick={() => changeCategory(end)}
-                  className="inline-flex items-center bg-slate-700 border h-14 p-4 rounded-lg"
+                  className="inline-flex items-center bg-slate-700 h-14 p-4 rounded-lg"
                 >
                   {name}
                 </button>
@@ -78,7 +81,7 @@ const ExploreMovies = () => {
       {isLoading ? (
         <PageLoader />
       ) : (
-        <div className="bg-white rounded-lg flex justify-center flex-wrap gap-4">
+        <div className=" md:mt-5 rounded-lg flex justify-center flex-wrap gap-4">
           {movie &&
             movie.length > 0 &&
             movie.map((curMovie, index) => {

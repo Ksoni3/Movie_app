@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { AiFillStar } from 'react-icons/ai'
 import Loading from './Loading'
-// import { Fade } from 'react-reveal'
 
 const MovieDetails = () => {
   const { id } = useParams()

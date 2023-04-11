@@ -52,7 +52,7 @@ const MovieDetails = () => {
               className="text-white w-full bg-no-repeat bg-slate-200 bg-opacity-40 bg-cover border rounded-md"
               style={{
                 backgroundImage: `url(${API_IMG}${singleMovieDetails.backdrop_path})`,
-                opacity: 0.8,
+                opacity: 0.5,
               }}
             >
               <img

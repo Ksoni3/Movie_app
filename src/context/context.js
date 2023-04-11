@@ -12,13 +12,15 @@ const AppContext = createContext()
 
 // https://api.themoviedb.org/3/discover/movie?api_key=API_KEY&with_genres=GENRE_ID
 
+// https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key=YOUR_API_KEY
+
 //Creating a provider
 const AppProvider = ({ children }) => {
   const api_key = 'd3129f18427d37c5012b4f4f64b1222a'
   const base_url = 'https://api.themoviedb.org/3/'
 
   const [isLoading, setIsLoading] = useState(true)
-  const [movie, setMovie] = useState([])
+  const [movies, setMovies] = useState([])
   const [category, setCategory] = useState('popular')
   const [query, setQuery] = useState('')
   const [isOpen, setIsOpen] = useState(false)
@@ -71,7 +73,7 @@ const AppProvider = ({ children }) => {
     axios
       .get(url)
       .then((res) => {
-        setMovie(res.data.results)
+        setMovies(res.data.results)
       })
       .catch((error) => console.log(error))
       .finally(() => {
@@ -86,7 +88,7 @@ const AppProvider = ({ children }) => {
       axios
         .get(searchUrl + query)
         .then((res) => {
-          setMovie(res.data.results)
+          setMovies(res.data.results)
         })
         .catch((error) => console.log(error))
         .finally(() => {
@@ -103,7 +105,7 @@ const AppProvider = ({ children }) => {
     axios
       .get(newGenrePath)
       .then((res) => {
-        setMovie(res.data.results)
+        setMovies(res.data.results)
       })
       .catch((error) => console.log(error))
       .finally(() => {
@@ -111,9 +113,30 @@ const AppProvider = ({ children }) => {
       })
   }
 
+  // get similar movies
+
+  const getSimilarMovies = (movie_id) => {
+    const url = `https://api.themoviedb.org/3/movie/${movie_id}/similar?api_key=${api_key}`
+    axios
+      .get(url)
+      .then((res) => {
+        console.log(res.data.results)
+        setMovies(res.data.results)
+      })
+      .catch((error) => console.log(error))
+      .finally(() => {
+        setIsLoading(false)
+      })
+  }
+
+  // move to top
+  const moveToTop = () => {
+    window.scrollTo(0, 0) // scroll to the top of the page
+  }
+
   const value = {
     api_key,
-    movie,
+    movies,
     isLoading,
     endpoint,
     setEndPoint,
@@ -133,6 +156,8 @@ const AppProvider = ({ children }) => {
     genreLists,
     hideSearchBar,
     setHideSearchBar,
+    getSimilarMovies,
+    moveToTop,
   }
 
   useEffect(() => {

@@ -1,13 +1,15 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { AiFillStar } from 'react-icons/ai'
 import Loading from './Loading'
+import SimilarMovies from './SimilarMovies'
+import { useGlobalContext } from '../context/context'
 
 const MovieDetails = () => {
   const { id } = useParams()
   const [singleMovieDetails, setSingleMovieDetails] = useState({})
   const API_IMG = 'https://image.tmdb.org/t/p/w500/'
+  const { getSimilarMovies, isInWatchLater, moveToTop } = useGlobalContext()
 
   useEffect(() => {
     const getSingleMovieDetails = (id) => {
@@ -27,49 +29,78 @@ const MovieDetails = () => {
     getSingleMovieDetails(id)
   }, [id])
 
+  //getting similar movies
+  useEffect(() => {
+    getSimilarMovies(id)
+  }, [id])
+
+  //scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0) // scroll to the top of the page
+  }, [])
+
   const rating = String(singleMovieDetails.vote_average).slice(0, 3)
   const year = String(singleMovieDetails.release_date).slice(0, 4)
 
-  return (
-    // <div>
-    //   <div className="h-screen pt-14">
-    //     <div className="w-3/4 h-3/4  bg-white m-auto shadow shadow-orange-300 flex  ">
-    //       <div className="w-[40%] bg-red-800">
-    //         {' '}
-    //         Right section
-    //         <h1> {singleMovie.original_title}</h1>
-    //       </div>
-    //       <div className="w-[60%] bg-green-600">Left Section</div>
-    //     </div>
-    //   </div>
-    // </div>
+  const {
+    original_language,
+    original_title,
+    overview,
+    popularity,
+    release_date,
+    title,
+    voter_average,
+    vote_count,
+  } = singleMovieDetails
 
-    <>
+  return (
+    <div className="bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900 flex flex-col text-white h-auto">
       {singleMovieDetails.original_title ? (
-        <>
-          <div className="flex justify-center h-[85vh] ">
-            <div
-              className="text-white w-full bg-no-repeat bg-slate-200 bg-opacity-40 bg-cover border rounded-md"
-              style={{
-                backgroundImage: `url(${API_IMG}${singleMovieDetails.backdrop_path})`,
-                opacity: 0.5,
-              }}
-            >
+        <div className="h-full">
+          <div className="h-[600px] mt-5md:mt-14 flex flex-col gap-10 bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900  relative">
+            <img
+              src={API_IMG + singleMovieDetails.backdrop_path}
+              alt="movie_poster"
+              className=" hidden md:block text-white h-5/6 shadow-md opacity-40"
+            />
+
+            <div className=" h-4/6 absolute top-14 left-16 flex flex-col md:flex-row gap-10">
               <img
-                alt="movie_poster"
-                className="w-auto h-auto object-cover object-center rounded z-10"
                 src={API_IMG + singleMovieDetails.backdrop_path}
+                alt="movie_poster"
+                className="h-full w-5/6 md:w-[22%] rounded-xl"
               />
+              <div className=" h-4/6 w-5/6 mx-auto mt-5">
+                <h1 className="text-3xl md:text-5xl font-serif font-bold  ">
+                  {singleMovieDetails.original_title}
+                </h1>
+                <div className="flex items-center text-2xl gap-2  mt-3">
+                  <p> {year}</p>
+                  <a className="bg-gray-300 px-3 py-1 rounded-lg">
+                    {original_language.toUpperCase()}
+                  </a>
+                </div>
+                <p className="w-3/4 text-lg mt-2">
+                  {overview.slice(0, 100)}....
+                </p>
+                <button className="bg-yellow-500 w-auto px-7 py-2 rounded-xl text-xl mt-4 md:mt-8 hover:bg-gray-600 transition duration-150 ease-in-out">
+                  {!isInWatchLater ? 'Save' : 'Unsave'}
+                </button>
+              </div>
             </div>
           </div>
-        </>
+          <h1 className="text-2xl w-1/2 text-white font-serif font-medium relative bottom-0 md:bottom-14 left-4 mt-2 md:mt-0 md:left-14 mb-5 md:-mb-12 ">
+            Similar Movies{' '}
+          </h1>
+          <SimilarMovies />
+        </div>
       ) : (
         <div className="flex flex-col items-center mt-12 ">
           <Loading />
           <h1 className="text-2xl font-bold mt-4">Loading...</h1>
         </div>
       )}
-    </>
+    </div>
   )
 }
 

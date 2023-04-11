@@ -4,7 +4,7 @@ import { useGlobalContext } from '../context/context'
 import Loading from './Loading'
 
 const PopularMovies = () => {
-  const { movie, isLoading } = useGlobalContext()
+  const { movies, isLoading } = useGlobalContext()
 
   return (
     <div>
@@ -12,7 +12,7 @@ const PopularMovies = () => {
         <Loading />
       ) : (
         <div className="w-full bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900 rounded-lg flex justify-center flex-wrap gap-4">
-          {movie.map((curMovie, index) => {
+          {movies.map((curMovie, index) => {
             return <MovieCard key={index} curMovie={curMovie} />
           })}
         </div>

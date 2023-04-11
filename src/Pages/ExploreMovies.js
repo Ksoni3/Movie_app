@@ -12,7 +12,7 @@ const ExploreMovies = () => {
     changeCategory,
     setCategory,
     changeGenre,
-    movie,
+    movies,
     isLoading,
     setHideSearchBar,
   } = useGlobalContext()
@@ -82,9 +82,9 @@ const ExploreMovies = () => {
         <PageLoader />
       ) : (
         <div className=" md:mt-5 rounded-lg flex justify-center flex-wrap gap-4">
-          {movie &&
-            movie.length > 0 &&
-            movie.map((curMovie, index) => {
+          {movies &&
+            movies.length > 0 &&
+            movies.map((curMovie, index) => {
               return <MovieCard key={index} curMovie={curMovie} />
             })}
         </div>

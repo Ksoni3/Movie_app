@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="h-28 sm:h-24  bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900  flex items-center justify-between flex-wrap z-50 ">
+      <div className="h-28 sm:h-24 bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900  flex items-center justify-between flex-wrap z-50">
         <img
           className="rounded-xl h-11 ml-4 sm:ml-5 md:ml-10 "
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/1200px-IMDB_Logo_2016.svg.png"
@@ -44,7 +44,7 @@ const Navbar = () => {
         </ul>
 
         <ul
-          className={` bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900 text-white flex flex-col justify-center items-center lg:hidden gap-12 text-3xl pb-20 font-semibold border-b-2 absolute ${
+          className={` bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900 text-white flex flex-col justify-center items-center lg:hidden gap-12 text-3xl pb-20 font-semibold absolute ${
             isOpen ? 'top-28' : '-top-full'
           } bg-white w-full h-screen z-10`}
         >

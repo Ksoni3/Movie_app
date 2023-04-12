@@ -8,12 +8,12 @@ const WatchLater = () => {
 
   useEffect(() => {
     setHideSearchBar(true)
-  }, setHideSearchBar)
+  }, [setHideSearchBar])
 
   return (
     <div className="min-h-screen flex flex-col gap-5 flex-wrap items-center bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900 ">
       <div className="h-24  w-full grid items-center">
-        <h1 className=" text-xl sm:text-5xl my-5 font-serif text-white text-center">
+        <h1 className=" text-3xl sm:text-4xl my-5 font-serif text-white text-center">
           Movies you have saved
         </h1>
       </div>

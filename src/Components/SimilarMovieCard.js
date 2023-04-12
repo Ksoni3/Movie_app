@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import NoImage from '../context/NoImage.jpg'
 import { useGlobalContext } from '../context/context'
 import { Zoom, Reveal } from 'react-awesome-reveal'
+import { BsBookmarkPlus, BsBookmarkPlusFill } from 'react-icons/bs'
 // import Zoom from 'react-reveal/Zoom'
 
 const SimilarMovieCard = ({ curMovie }) => {
@@ -88,9 +89,13 @@ const SimilarMovieCard = ({ curMovie }) => {
                     onClick={() => {
                       saveToWatchLater(curMovie)
                     }}
-                    className="bg-yellow-500 w-auto px-2 py-1 rounded-xl text-md hover:bg-gray-600 transition duration-150 ease-in-out"
+                    className=" w-auto px-2 py-1 rounded-xl text-3xl"
                   >
-                    {!isInWatchLater ? 'Save' : 'Unsave'}
+                    {!isInWatchLater ? (
+                      <BsBookmarkPlus />
+                    ) : (
+                      <BsBookmarkPlusFill />
+                    )}
                   </button>
                 </div>
               </div>

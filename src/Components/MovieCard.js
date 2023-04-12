@@ -37,6 +37,8 @@ const MovieCard = ({ curMovie }) => {
     )
     if (isPresent.length) {
       setIsInWatchLater(true)
+    } else {
+      setIsInWatchLater(false)
     }
   }, [watchLater, curMovie.id])
 

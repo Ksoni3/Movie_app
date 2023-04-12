@@ -1,5 +1,5 @@
 import { useGlobalContext } from '../context/context'
-import PopularMovies from '../Components/PopularMovies'
+import Movies from '../Components/Movies'
 import PageLoader from '../Components/PageLoader'
 import { useEffect } from 'react'
 
@@ -15,7 +15,7 @@ const Home = () => {
     <div className="min-h-screen bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900  flex flex-col justify-center">
       <div className="h-24 grid items-center">
         {query.length === 0 ? (
-          <h1 className="text-xl sm:text-4xl my-5 font-serif font-semibold text-center text-white">
+          <h1 className="text-3xl sm:text-4xl my-5 font-serif font-semibold text-center text-white">
             {' '}
             Popular Movies
           </h1>
@@ -26,7 +26,7 @@ const Home = () => {
         )}
       </div>
       <div className=" h-full mt-8 flex justify-center items-center">
-        {isLoading ? <PageLoader /> : <PopularMovies />}
+        {isLoading ? <PageLoader /> : <Movies />}
       </div>
     </div>
   )

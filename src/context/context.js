@@ -120,7 +120,6 @@ const AppProvider = ({ children }) => {
     axios
       .get(url)
       .then((res) => {
-        console.log(res.data.results)
         setMovies(res.data.results)
       })
       .catch((error) => console.log(error))

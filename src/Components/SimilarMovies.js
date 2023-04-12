@@ -1,5 +1,4 @@
 import React from 'react'
-import MovieCard from './MovieCard'
 import { useGlobalContext } from '../context/context'
 import Loading from './Loading'
 import SimilarMovieCard from './SimilarMovieCard'

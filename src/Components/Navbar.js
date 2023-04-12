@@ -86,7 +86,9 @@ const Navbar = () => {
         />
       </ul>
       <div
-        className=" absolute right-16 md:right-80 sm:text-3xl text-5xl text-white "
+        className={` absolute right-[68px] md:right-80 sm:text-3xl text-5xl ${
+          isDark ? 'text-white' : 'text-zinc-700'
+        }`}
         onClick={() => setIsDark(!isDark)}
       >
         {isDark ? <MdDarkMode /> : <MdOutlineDarkMode />}
@@ -97,8 +99,8 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`block lg:hidden  text-5xl mr-4 ${
-          isDark ? 'text-white' : ''
+        className={`block lg:hidden  text-6xl mr-2 sm:mr-4 ${
+          isDark ? 'text-white' : 'text-zinc-700'
         }`}
         onClick={() => setIsOpen(!isOpen)}
       >

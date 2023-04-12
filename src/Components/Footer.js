@@ -1,9 +1,18 @@
 import React from 'react'
+import { useGlobalContext } from '../context/context'
 
 const Footer = () => {
+  const { isDark } = useGlobalContext()
+
   return (
     <>
-      <footer className="bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900 text-center  ">
+      <div
+        className={`${
+          isDark
+            ? 'bg-gradient-to-r from-zinc-800 via-slate-800 to-stone-800'
+            : 'bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900'
+        } text-center `}
+      >
         <div className="px-6 pt-6">
           <form action="">
             <div className="grid md:grid-cols-3 gird-cols-1 gap-4  justify-center items-center">
@@ -55,7 +64,7 @@ const Footer = () => {
             IMDB Movies
           </a>
         </div>
-      </footer>
+      </div>
     </>
   )
 }

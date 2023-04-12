@@ -2,15 +2,21 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Loading from './Loading'
-import SimilarMovies from './SimilarMovies'
 import { useGlobalContext } from '../context/context'
+import SmallCardMovies from './SmallCardMovies'
 
 const MovieDetails = () => {
   const [isInWatchLater, setIsInWatchLater] = useState(false)
   const { id } = useParams()
   const [singleMovieDetails, setSingleMovieDetails] = useState({})
   const API_IMG = 'https://image.tmdb.org/t/p/w500/'
-  const { getSimilarMovies, setWatchLater, watchLater } = useGlobalContext()
+
+  const {
+    getSimilarMovies,
+    setWatchLater,
+    watchLater,
+    isDark,
+  } = useGlobalContext()
 
   const handleDelete = (movie) => {
     const newWatchLater = watchLater.filter((singleMovie) => {
@@ -85,10 +91,22 @@ const MovieDetails = () => {
   } = singleMovieDetails
 
   return (
-    <div className="bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900 flex flex-col text-white h-auto">
+    <div
+      className={`${
+        isDark
+          ? 'bg-gradient-to-r from-zinc-800 via-slate-800 to-stone-800'
+          : 'bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900'
+      } flex flex-col text-white h-auto`}
+    >
       {singleMovieDetails.original_title ? (
         <div className="h-full">
-          <div className="h-[600px] mt-5md:mt-14 flex flex-col gap-10 bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900  relative">
+          <div
+            className={`h-[600px] mt-5md:mt-14 flex flex-col gap-10 ${
+              isDark
+                ? 'bg-gradient-to-r from-zinc-800 via-slate-800 to-stone-800'
+                : 'bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900'
+            }  relative`}
+          >
             <img
               src={API_IMG + singleMovieDetails.backdrop_path}
               alt="movie_poster"
@@ -107,9 +125,9 @@ const MovieDetails = () => {
                 </h1>
                 <div className="flex items-center text-2xl gap-2  mt-3">
                   <p> {year}</p>
-                  <a className="bg-gray-300 px-3 py-1 rounded-lg">
+                  <button className="bg-slate-700 px-3 py-1 rounded-lg">
                     {original_language.toUpperCase()}
-                  </a>
+                  </button>
                 </div>
                 <p className="w-5/6 md:w-3/4 text-lg mt-2">
                   {overview.slice(0, 100)}....
@@ -128,7 +146,7 @@ const MovieDetails = () => {
           <h1 className="text-2xl w-1/2 text-white font-serif font-medium relative bottom-0 md:bottom-14 left-6 mt-2 md:mt-0 md:left-14 mb-5 md:-mb-12 ">
             Similar Movies{' '}
           </h1>
-          <SimilarMovies />
+          <SmallCardMovies />
         </div>
       ) : (
         <div className="flex flex-col items-center mt-12 ">

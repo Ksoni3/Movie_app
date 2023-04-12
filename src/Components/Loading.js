@@ -9,7 +9,7 @@ const Loading = () => {
     <>
       <div className="container">
         <div className="image">
-          <img className="loadingimage" src={LoadingImage} />
+          <img className="loadingimage" src={LoadingImage} alt="loadingimage" />
         </div>
         <div className="skeleton-theming">
           <SkeletonTheme

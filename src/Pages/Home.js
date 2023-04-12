@@ -4,7 +4,13 @@ import PageLoader from '../Components/PageLoader'
 import { useEffect } from 'react'
 
 const Home = () => {
-  const { setCategory, isLoading, query, setHideSearchBar } = useGlobalContext()
+  const {
+    setCategory,
+    isLoading,
+    query,
+    setHideSearchBar,
+    isDark,
+  } = useGlobalContext()
 
   useEffect(() => {
     setCategory('popular')
@@ -12,7 +18,13 @@ const Home = () => {
   }, [setCategory, setHideSearchBar])
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900  flex flex-col justify-center">
+    <div
+      className={`min-h-screen ${
+        isDark
+          ? 'bg-gradient-to-r from-zinc-800 via-slate-800 to-stone-800'
+          : 'bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900'
+      }  flex flex-col justify-center`}
+    >
       <div className="h-24 grid items-center">
         {query.length === 0 ? (
           <h1 className="text-3xl sm:text-4xl my-5 font-serif font-semibold text-center text-white">

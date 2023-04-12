@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import NoImage from '../context/NoImage.jpg'
 import { useGlobalContext } from '../context/context'
-import { Zoom, Reveal } from 'react-awesome-reveal'
+import { Reveal } from 'react-awesome-reveal'
 import { BsBookmarkPlus, BsBookmarkPlusFill } from 'react-icons/bs'
-// import Zoom from 'react-reveal/Zoom'
 
-const SimilarMovieCard = ({ curMovie }) => {
+const SmallMovieCard = ({ curMovie }) => {
   const API_IMG = 'https://image.tmdb.org/t/p/w500'
   const { watchLater, setWatchLater, moveToTop } = useGlobalContext()
   const [isInWatchLater, setIsInWatchLater] = useState(false)
@@ -65,12 +64,13 @@ const SimilarMovieCard = ({ curMovie }) => {
                   <img
                     className="w-[100%] rounded-lg mx-fit -mt-10 max-h-[250px]  transition duration-300 ease-in-out hover:scale-105 "
                     src={API_IMG + curMovie.poster_path}
-                    alt=""
+                    alt="#"
                   />
                 ) : (
                   <img
                     className="w-[100%] rounded-t-lg mx-fit -mt-10 h-[250px] transition duration-300 ease-in-out hover:scale-105"
                     src={NoImage}
+                    alt="NoImage"
                   />
                 )}
               </Link>
@@ -107,4 +107,4 @@ const SimilarMovieCard = ({ curMovie }) => {
   )
 }
 
-export default SimilarMovieCard
+export default SmallMovieCard

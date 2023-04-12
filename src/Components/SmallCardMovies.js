@@ -1,25 +1,31 @@
 import React from 'react'
-import MovieCard from './MovieCard'
 import { useGlobalContext } from '../context/context'
 import Loading from './Loading'
+import SmallMovieCard from './SmallMovieCard'
 
-const Movies = () => {
+const SmallCardMovies = () => {
   const { movies, isLoading, isDark } = useGlobalContext()
 
   return (
-    <div>
+    <div
+      className={`${
+        isDark
+          ? 'bg-gradient-to-r from-zinc-800 via-slate-800 to-stone-800'
+          : 'bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900'
+      }`}
+    >
       {isLoading ? (
         <Loading />
       ) : (
         <div
-          className={`w-full ${
+          className={`w-11/12 mx-auto ${
             isDark
               ? 'bg-gradient-to-r from-zinc-800 via-slate-800 to-stone-800'
               : 'bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900'
-          } rounded-lg flex justify-center flex-wrap gap-4`}
+          } rounded-lg flex justify-start items-center overflow-x-auto  gap-4`}
         >
           {movies.map((curMovie, index) => {
-            return <MovieCard key={index} curMovie={curMovie} />
+            return <SmallMovieCard key={index} curMovie={curMovie} />
           })}
         </div>
       )}
@@ -27,4 +33,4 @@ const Movies = () => {
   )
 }
 
-export default Movies
+export default SmallCardMovies

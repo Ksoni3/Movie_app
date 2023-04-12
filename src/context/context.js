@@ -9,14 +9,15 @@ import axios from 'axios'
 import NoImage from './NoImage.jpg'
 
 const AppContext = createContext()
-
-// https://api.themoviedb.org/3/discover/movie?api_key=API_KEY&with_genres=GENRE_ID
-
-// https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key=YOUR_API_KEY
+const queryString = {
+  api_key: process.env.REACT_APP_API_KEY,
+}
 
 //Creating a provider
 const AppProvider = ({ children }) => {
-  const api_key = 'd3129f18427d37c5012b4f4f64b1222a'
+  // const api_key = 'd3129f18427d37c5012b4f4f64b1222a'
+
+  const { api_key } = queryString
   const base_url = 'https://api.themoviedb.org/3/'
 
   const [isLoading, setIsLoading] = useState(true)
@@ -27,6 +28,7 @@ const AppProvider = ({ children }) => {
   const [watchLater, setWatchLater] = useState([])
   const [genreLists, setGenreLists] = useState([])
   const [hideSearchBar, setHideSearchBar] = useState(false)
+  const [isDark, setIsDark] = useState(true)
 
   //endpoint for fectching list of genre Links
 
@@ -54,7 +56,7 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     setEndPoint(`movie/${category}?api_key=${api_key}`)
-  }, [category])
+  }, [category, api_key])
 
   //fetching gerne lists
 
@@ -65,7 +67,7 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     getGenreLists()
-  }, [])
+  }, [getGenreLists])
 
   // fetching movies
 
@@ -157,6 +159,8 @@ const AppProvider = ({ children }) => {
     setHideSearchBar,
     getSimilarMovies,
     moveToTop,
+    isDark,
+    setIsDark,
   }
 
   useEffect(() => {

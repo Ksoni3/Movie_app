@@ -15,6 +15,7 @@ const ExploreMovies = () => {
     movies,
     isLoading,
     setHideSearchBar,
+    isDark,
   } = useGlobalContext()
 
   useEffect(() => {
@@ -26,7 +27,7 @@ const ExploreMovies = () => {
     if (filterBy === 'Genre') {
       changeGenre('16')
     }
-  }, [filterBy])
+  }, [filterBy, changeGenre])
 
   // checking
 
@@ -35,7 +36,13 @@ const ExploreMovies = () => {
   }
 
   return (
-    <div className="h-100vh flex flex-col items-center justify-center gap-5 p-4 bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900">
+    <div
+      className={`h-100vh flex flex-col items-center justify-center gap-5 p-4 ${
+        isDark
+          ? 'bg-gradient-to-r from-zinc-800 via-slate-800 to-stone-800'
+          : 'bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900'
+      }`}
+    >
       <div>
         <label className="ml-6 text-xl md:text-2xl font-serif text-white">
           {' '}

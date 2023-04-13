@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useGlobalContext } from '../context/context'
 import { BiMenu } from 'react-icons/bi'
 import { RxCrossCircled } from 'react-icons/rx'
@@ -9,6 +9,7 @@ import { MdDarkMode, MdOutlineDarkMode } from 'react-icons/md'
 import Search from './Search'
 
 const Navbar = () => {
+  const navigate = useNavigate()
   const {
     isOpen,
     setIsOpen,
@@ -50,6 +51,7 @@ const Navbar = () => {
         className="rounded-xl h-11 ml-4 sm:ml-5 md:ml-10 "
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/1200px-IMDB_Logo_2016.svg.png"
         alt=""
+        onClick={() => navigate('/')}
       />
 
       <ul className=" hidden lg:flex lg:gap-8 xl:gap-10 font-normal text-xl text-white ">

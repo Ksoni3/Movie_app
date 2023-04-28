@@ -42,7 +42,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`   px-2 md:px-8 py-4 md:py-6 ${
+      className={`px-2 md:px-8 py-4 md:py-6 border-red-500 ${
         isDark
           ? 'bg-gradient-to-r from-zinc-800 via-slate-800 to-stone-800'
           : 'bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900'
@@ -55,7 +55,7 @@ const Navbar = () => {
         onClick={() => navigate('/')}
       />
 
-      <ul className=" w-[60%] hidden lg:flex items-center justify-center lg:gap-8 xl:gap-10 font-normal text-xl text-white ">
+      <ul className=" w-[50%] hidden lg:flex items-center justify-center lg:gap-8 xl:gap-10 font-normal text-xl text-white ">
         <SingleNavLink to="/" linkName="Home" />
         <SingleNavLink to="/explore_movies" linkName="Explore Movies" />
         <SingleNavLink to="/contact_us" linkName="Contact Us" />
@@ -89,7 +89,7 @@ const Navbar = () => {
         />
       </ul>
       <div
-        className={`hidden md:flex w-[10%] md:w-[5%] justify-center sm:text-3xl text-5xl ${
+        className={`hidden sm:block sm:text-3xl text-5xl ${
           isDark ? 'text-white' : 'text-white'
         }`}
         onClick={() => setIsDark(!isDark)}

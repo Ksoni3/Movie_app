@@ -19,7 +19,7 @@ const Home = () => {
 
   return (
     <div
-      className={`min-h-screen ${
+      className={` ${
         isDark
           ? 'bg-gradient-to-r from-zinc-800 via-slate-800 to-stone-800'
           : 'bg-gradient-to-r from-blue-800 via-blue-600 to-blue-900'

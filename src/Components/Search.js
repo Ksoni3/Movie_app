@@ -23,7 +23,7 @@ const Search = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search Movie"
-          className={` w-44  h-11 md:h-9 pl-3 md:pl-4 sm:ml-4 mr-12 rounded-xl border border-blue-800 text-large ${
+          className={` mx-1 h-11 md:h-9 pl-3 md:pl-4 rounded-xl border outline-none border-blue-800 text-large ${
             hideSearchBar ? 'invisible' : 'visible'
           }`}
         />
